@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="SteelUnderpants.DynamicHyperlinker.js"></script>
+  <script type="text/javascript">
+    var options = {
+		jQueryBindSelectors: ["#demo_region1", "#demo_region2"],
+		fetchDynamicHyperlinkDefintions: function(callback) {
+			return [
+				{selector:"dog[^\\s]*", value:"https://www.google.com/search?q=dog", new_window:false, css_class:"doggy"},
+				{selector:"fox", value:"https://www.google.com/search?q=fox", new_window:true, css_class:"foxy"}
+			];
+		}
+	};
+	var dh = new SteelUnderpants.DynamicHyperlinker(options);
+	dh.execute();
+  </script>
+  <style>
+	.doggy { color: brown; }
+	.foxy {color: red; }
+  </style>
+</head>
+<body>
+  <h1 id="qunit-header">SteelUnderpants.DynamicHyperlinker Demo</h1>
+  <p id="demo_region1">The quick red fox jumped over the lazy red dogs.</p>
+  <p>Though I talk abotu a dog and fox, it won't be picked up.</p>
+  <p id="demo_region2">Here a dog or a fox will be picked up.</p>
+</body>
+</html>
